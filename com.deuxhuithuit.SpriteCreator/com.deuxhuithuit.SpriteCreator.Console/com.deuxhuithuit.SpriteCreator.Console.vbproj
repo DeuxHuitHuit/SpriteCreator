@@ -7,12 +7,12 @@
     </ProductVersion>
     <SchemaVersion>
     </SchemaVersion>
-    <ProjectGuid>{29D41D38-5540-4737-B690-CCF09BA7CC81}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>com.deuxhuithuit.SpriteCreator.Core</RootNamespace>
-    <AssemblyName>com.deuxhuithuit.SpriteCreator.Core</AssemblyName>
+    <ProjectGuid>{17DBC9C9-4A97-4EBA-9D11-9D1B25D3B95E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>com.deuxhuithuit.SpriteCreator.Console</RootNamespace>
+    <AssemblyName>com.deuxhuithuit.SpriteCreator.Console</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>Console</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>com.deuxhuithuit.SpriteCreator.Core.xml</DocumentationFile>
+    <DocumentationFile>com.deuxhuithuit.SpriteCreator.Console.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,7 +30,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>com.deuxhuithuit.SpriteCreator.Core.xml</DocumentationFile>
+    <DocumentationFile>com.deuxhuithuit.SpriteCreator.Console.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,9 +45,13 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +68,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -79,7 +84,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SpriteCreator.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -99,6 +103,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\com.deuxhuithuit.SpriteCreator.Core\com.deuxhuithuit.SpriteCreator.Core.vbproj">
+      <Project>{29D41D38-5540-4737-B690-CCF09BA7CC81}</Project>
+      <Name>com.deuxhuithuit.SpriteCreator.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
