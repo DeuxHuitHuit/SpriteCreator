@@ -13,6 +13,10 @@ Public Class SpriteCreator
 
     Public Sub New(targetFolder As String, file As String, fileFilter As String)
         _targetFolder = targetFolder
+        If Not _targetFolder.EndsWith("\") Then
+            _targetFolder &= "\"
+        End If
+
         _file = file
         _fileFilter = fileFilter
         _filePath = _targetFolder & _file

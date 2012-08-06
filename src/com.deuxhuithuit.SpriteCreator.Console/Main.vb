@@ -10,16 +10,18 @@ Module Main
     Private fileFilter As String = "*.png"
 
     Sub Main()
+        ' Parse command line arguments
         parseArgs()
-
-        WriteLine("Welcome in Deux Huit Huit's SpriteCreator")
-        WriteLine()
-        WriteLine("Taget Folder: {0}", targetFolder)
-        WriteLine("Output File: {0}", file)
-        WriteLine()
 
         ' Assure we have a folder
         AssureFolder()
+
+        WriteLine("Welcome in Deux Huit Huit's SpriteCreator")
+        WriteLine()
+        WriteLine("Taget folder: {0}", targetFolder)
+        WriteLine("File filter: {0}", fileFilter)
+        WriteLine("Output file: {0}", file)
+        WriteLine()
 
         Dim start As Date = Now
         Dim dirInfo As IO.DirectoryInfo = FileIO.FileSystem.GetDirectoryInfo(targetFolder)
@@ -68,6 +70,8 @@ Module Main
                         file = s.Remove(0, 3)
                     ElseIf s.StartsWith("-t:") Then
                         targetFolder = s.Remove(0, 3)
+                    ElseIf s.StartsWith("-filter:") Then
+                        fileFilter = s.Remove(0, 8)
                     Else
                         WriteLine("Argument '{0}' not valid.", s)
                     End If

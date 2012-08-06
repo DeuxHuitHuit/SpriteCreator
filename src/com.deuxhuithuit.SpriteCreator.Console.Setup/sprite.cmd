@@ -1,0 +1,1 @@
+"%ProgramFiles(x86)%\Deux Huit Huit\SpriteCreator\com.deuxhuithuit.SpriteCreator.Console.exe" %1 %2 %3 %4
