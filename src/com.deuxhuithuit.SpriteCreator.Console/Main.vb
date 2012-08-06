@@ -1,9 +1,11 @@
 ﻿Imports System.Console
 Imports System.IO
 
+Imports com.deuxhuithuit.SpriteCreator
+
 Module Main
 
-    Private targetFolder As String = "E:\github\SpriteCreator\test\"
+    Private targetFolder As String = ""
     Private file As String = "sprite.png"
     Private fileFilter As String = "*.png"
 
@@ -15,16 +17,6 @@ Module Main
         WriteLine("Taget Folder: {0}", targetFolder)
         WriteLine("Output File: {0}", file)
         WriteLine()
-        'WriteLine()
-        'Threading.Thread.Sleep(1000)
-        'Write(" -> 3 -> ")
-        'Threading.Thread.Sleep(1000)
-        'Write("2 -> ")
-        'Threading.Thread.Sleep(1000)
-        'Write("1 -> ")
-        'Threading.Thread.Sleep(1000)
-        'WriteLine(" GO!")
-        'WriteLine()
 
         ' Assure we have a folder
         AssureFolder()
@@ -33,7 +25,7 @@ Module Main
         Dim dirInfo As IO.DirectoryInfo = FileIO.FileSystem.GetDirectoryInfo(targetFolder)
 
         If dirInfo IsNot Nothing AndAlso dirInfo.Exists Then
-            Dim sc As New SpriteCreator.Core.SpriteCreator(targetFolder, file, fileFilter)
+            Dim sc As New Core.SpriteCreator(targetFolder, file, fileFilter)
             Dim files As List(Of String) = sc.GetAllImageInFolder
 
             If files.Count < 1 Then
