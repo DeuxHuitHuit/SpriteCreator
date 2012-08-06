@@ -15,17 +15,17 @@
 
 Optionally, you can pass parameters to the `sprite` command
 
-- -f:name-of-the-sprite-file.ext the name of the created image
+- **-f:name-of-the-sprite-file.ext** the name of the created image
 	- Defaults to sprite.png
-- -filter:*.ext a filter string for filtering the images in the folder
+- **-filter:*.ext** a filter string for filtering the images in the folder
 	- Defaults to *.png
-- -t:path\to\ouput\folder\ the folder where to save the sprite image
+- **-t:path\to\ouput\folder\** the folder where to save the sprite image
 	- Default to the current directory
 - Example with jpg: `sprite -f:sprite.jpg -filter:*.jpg`
 
 ## Build your own version
 
-You can checkout the repro and open the Visual Studio
+You can checkout the entire repro and open the Visual Studio 2010 solution.
 	
 ## Copyrights
 
