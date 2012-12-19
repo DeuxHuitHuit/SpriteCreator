@@ -10,8 +10,9 @@ Public Class SpriteCreator
     Private _fileFilter As String
     Private _fileList As List(Of String)
     Private _filePath As String
+    Private _horizontalLimit As Integer
 
-    Public Sub New(targetFolder As String, file As String, fileFilter As String)
+    Public Sub New(targetFolder As String, file As String, fileFilter As String, horizontalLimit As Integer)
         _targetFolder = targetFolder
         If Not _targetFolder.EndsWith("\") Then
             _targetFolder &= "\"
@@ -20,6 +21,7 @@ Public Class SpriteCreator
         _file = file
         _fileFilter = fileFilter
         _filePath = _targetFolder & _file
+        _horizontalLimit = horizontalLimit
     End Sub
 
     Public Function GetAllImageInFolder() As List(Of String)
@@ -43,9 +45,11 @@ Public Class SpriteCreator
         Dim width = refImage.Width
 
         ' Create the new sprite image
-        Dim sprite As New Bitmap(width, height * _fileList.Count, refImage.PixelFormat)
+        Dim sprite As New Bitmap(width * _horizontalLimit, CType(height * Math.Ceiling(_fileList.Count / _horizontalLimit),Integer), refImage.PixelFormat)
         Dim g As Graphics = Graphics.FromImage(sprite)
         Dim counter As Integer = 0
+        Dim x As Integer = 0
+        Dim y As Integer = 0
 
         ' Dispose our ref image
         refImage.Dispose()
@@ -53,9 +57,15 @@ Public Class SpriteCreator
         ' Draw each image into the sprite
         For Each f As String In _fileList
             Dim bm = New Bitmap(_fileList(counter), True)
-            g.DrawImage(bm, 0, counter * height, width, height)
+            g.DrawImage(bm, x * width, y * height, width, height)
             bm.Dispose()
             counter += 1
+            x += 1
+
+            If x = _horizontalLimit Then
+                x = 0
+                y += 1
+            End If
         Next
 
         ' Dispose graphics

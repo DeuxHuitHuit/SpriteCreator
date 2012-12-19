@@ -8,6 +8,7 @@ Module Main
     Private targetFolder As String = ""
     Private file As String = "sprite.png"
     Private fileFilter As String = "*.png"
+    Private horizontalLimit As String = "1"
 
     Sub Main()
         ' Parse command line arguments
@@ -21,13 +22,16 @@ Module Main
         WriteLine("Taget folder: {0}", targetFolder)
         WriteLine("File filter: {0}", fileFilter)
         WriteLine("Output file: {0}", file)
+        WriteLine("Horizontal limit: {0}", horizontalLimit)
         WriteLine()
 
         Dim start As Date = Now
         Dim dirInfo As IO.DirectoryInfo = FileIO.FileSystem.GetDirectoryInfo(targetFolder)
 
-        If dirInfo IsNot Nothing AndAlso dirInfo.Exists Then
-            Dim sc As New Core.SpriteCreator(targetFolder, file, fileFilter)
+        If Not IsNumeric(horizontalLimit) OrElse CType(horizontalLimit, Integer) < 1 Then
+            WriteLine("ERROR: '{0}' is not a valid value. Must be a numerical value greater than 0.", horizontalLimit)
+        ElseIf dirInfo IsNot Nothing AndAlso dirInfo.Exists Then
+            Dim sc As New Core.SpriteCreator(targetFolder, file, fileFilter, CType(horizontalLimit, Integer))
             Dim files As List(Of String) = sc.GetAllImageInFolder
 
             If files.Count < 1 Then
@@ -72,6 +76,8 @@ Module Main
                         targetFolder = s.Remove(0, 3)
                     ElseIf s.StartsWith("-filter:") Then
                         fileFilter = s.Remove(0, 8)
+                    ElseIf s.StartsWith("-hl:") Then
+                        horizontalLimit = s.Remove(0, 4)
                     Else
                         WriteLine("Argument '{0}' not valid.", s)
                     End If
