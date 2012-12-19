@@ -1,6 +1,7 @@
 # SpriteCreator
 
-Version 1.0
+Version 1.1
+
 
 #### Simple software that create a big image sprite from a series of images in a folder
 
@@ -25,7 +26,7 @@ Optionally, you can pass parameters to the `sprite` command
 	- Defaults to the current directory
 - **-hl:number-of-columns-in-sprite** the images will be added horizontally for the number of columns specified
 	- Defaults to 1
-- Example with jpg: `sprite -f:sprite.jpg -filter:*.jpg`
+- Example with jpg: `sprite -f:sprite.jpg -filter:*.jpg -hl:1`
 
 ## Build your own version
 
