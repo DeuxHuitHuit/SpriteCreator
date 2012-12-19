@@ -23,6 +23,8 @@ Optionally, you can pass parameters to the `sprite` command
 	- Defaults to *.png
 - **-t:path\to\ouput\folder\** the folder where to save the sprite image
 	- Defaults to the current directory
+- **-hl:number-of-columns-in-sprite** the images will be added horizontally for the number of columns specified
+	- Defaults to 1
 - Example with jpg: `sprite -f:sprite.jpg -filter:*.jpg`
 
 ## Build your own version
